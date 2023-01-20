@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { HolidayAgencyMover } from "../components/HolidayAgencyMover";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
+import { Link } from 'react-router-dom';
+import { CommentListPage } from "./CommentList";
 
 export function ViewBlog(){
     const [blog, setBlog] = useState({});
@@ -27,23 +28,39 @@ export function ViewBlog(){
             </div>
                 <div>{blog.id}</div>
 
-            <div>
-                <b>Title</b>
-            </div>
-                <div>{blog.title}</div>
+            <Form>
+                <Form.Group className="mb-3" controlId="formTitle">
+                    {/* <Form.Label htmlFor="title">Antraste</Form.Label> */}
+                    <Form.Control
+                    id="title"
+                    placeholder="Title"
+                    value={blog.title}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formContent">
+                    {/* <Form.Label htmlFor="content">Tekstas</Form.Label> */}
+                    <Form.Control
+                    id="content"
+                    placeholder="Content"
+                    value={blog.content}
+                    />
+                </Form.Group>
+            </Form>
 
             <div>
-                <b>Content</b>
-            </div>
-                <div>{blog.content}</div>
-
-            <div>
-                <b>Publishing Date</b>
+                Publishing Date
             </div>
                 <div>{blog.publishingDate}</div>
-                
+
+                <Link to='/createComment'><Button variant="outline-secondary m-2">Rasyti komentara</Button></Link>
+
             </Card.Body>
         </Card>
+
+        <div><b>Komentarai:</b></div>
+        <div>
+            {/* <CommentListPage /> */}
+        </div>
     </Container>
     )
 }

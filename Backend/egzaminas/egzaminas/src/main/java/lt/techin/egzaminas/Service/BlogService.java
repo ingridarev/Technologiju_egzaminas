@@ -2,6 +2,7 @@ package lt.techin.egzaminas.Service;
 
 import lt.techin.egzaminas.Model.Blog;
 import lt.techin.egzaminas.dao.BlogRepository;
+import lt.techin.egzaminas.dao.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,12 @@ import java.util.Optional;
 public class BlogService {
 
     private final BlogRepository blogRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
-    public BlogService(BlogRepository blogRepository){
+    public BlogService(BlogRepository blogRepository, CommentRepository commentRepository){
         this.blogRepository= blogRepository;
+        this.commentRepository = commentRepository;
     }
 
     public List<Blog> getAll() {

@@ -5,6 +5,8 @@ import { BlogListPage } from './pages/BlogList';
 import { CreateBlogPage } from './pages/CreateBlog';
 import { Menu } from './Components/Menu';
 import { ViewBlog} from './pages/ViewBlog';
+import { CreateCommentPage } from './pages/CreateComment';
+import { CommentListPage } from './pages/CommentList';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<BlogListPage/>}/>
           <Route path="/create" element={<CreateBlogPage/>} />
           <Route path='/blogs/view/:id' element={<ViewBlog />} />
+          <Route path='/createComment' element={<CreateCommentPage />} />
+          <Route path="/commentList" element={<CommentListPage/>} />
         </Routes>
 
       </HashRouter>

@@ -1,9 +1,6 @@
 package lt.techin.egzaminas.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -21,6 +18,11 @@ public class Blog {
 
     private String content;
     private Date publishingDate;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "comment_id")
+    //@JoinColumn(name = "room_id", nullable = true)
+    private Comment comment;
 
     public Blog(){}
 

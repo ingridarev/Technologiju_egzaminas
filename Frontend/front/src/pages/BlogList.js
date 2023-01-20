@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 
 
 const JSON_HEADERS = {
@@ -23,15 +22,15 @@ export function BlogListPage(){
     fetchBlogs();
   }, []);
 
-  const removeBlog = (id) => {
-    fetch("/api/v1/blogs/" + id, {
-      method: "DELETE",
-      headers: JSON_HEADERS,
-    }).then(fetchBlogs);
-  };
+  // const removeBlog = (id) => {
+  //   fetch("/api/v1/blogs/" + id, {
+  //     method: "DELETE",
+  //     headers: JSON_HEADERS,
+  //   }).then(fetchBlogs);
+  // };
 
     return (
-<Container>
+<Container style={{ width: "45rem" }}>
     <Card>
         <Card.Body>
             <div>
@@ -41,9 +40,9 @@ export function BlogListPage(){
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Title</th>
-                  <th>Content</th>
-                  <th>Publishing date</th>
+                  <th>Antraste</th>
+                  <th>Tekstas</th>
+                  <th>Publikuota</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,21 +50,21 @@ export function BlogListPage(){
                   <tr key={blog.id}>
                     <td>
                       <Link to={"/blogs/view/" + blog.id}>
-                        {blog.id}
+                        {blog.id} Skaityti daugiau
                       </Link>
                     </td>
                     <td>{blog.title}</td>
                     <td>{blog.content}</td>
                     <td>{blog.publishingDate}</td>
                     <td>
-                      <Link to={"/holidays/update/" + blog.id}>
+                      {/* <Link to={"/holidays/update/" + blog.id}>
                         <Button variant="outline-secondary m-2">Update</Button>
                       </Link>
                       <Button
                         variant="outline-danger"
                         onClick={() => removeBlog(blog.id)}>
                         Remove
-                      </Button>
+                      </Button> */}
                     </td>
                   </tr>
                 ))}

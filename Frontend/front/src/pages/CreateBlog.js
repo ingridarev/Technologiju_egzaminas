@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHref } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -23,7 +23,9 @@ const clear = () => {
     if (result.ok) {
       clear();
     } else {
-      window.alert("Nepavyko sukurti:" + result.status);
+      document.getElementById('title').style.borderColor = "red";
+      window.alert("Su tuscia antraste sukurti neleidziama. Klaidos statusas: " + result.status);
+      
     }
   };
 
@@ -43,36 +45,38 @@ const clear = () => {
       .then(() => (window.location = listUrl));
   };
 
+
 return(
 <Container style={{width: "25rem"}}>
       <Card>
         <Card.Body>
             <fieldset id="create">
-                <legend>Create New Holiday</legend>
+                <legend><b>Naujas irasas</b></legend>
             </fieldset>
 
             <Form>
                 <Form.Group className="mb-3" controlId="formTitle">
-                    <Form.Label htmlFor="title">Title</Form.Label>
+                    <Form.Label htmlFor="title">Antraste</Form.Label>
                     <Form.Control
                     id="title"
-                    placeholder="Title"
+                    placeholder="Naujas straipsnis"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formContent">
-                    <Form.Label htmlFor="content">Content</Form.Label>
+                    <Form.Label htmlFor="content">Tekstas</Form.Label>
                     <Form.Control
+                    as="textarea" rows={5} 
                     id="content"
-                    placeholder="Content"
+                    placeholder="Straipsnio tekstas..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formType">
                     <Button variant="outline-dark" onClick={createBlog}>
-                    Create
+                    Publikuoti
                     </Button>
                 </Form.Group>
             </Form>
