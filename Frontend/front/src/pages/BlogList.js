@@ -54,9 +54,9 @@ export function BlogListPage(){
                         {blog.id}
                       </Link>
                     </td>
-                    <td>{blog.name}</td>
-                    <td>{blog.type}</td>
-                    <td>{blog.destination}</td>
+                    <td>{blog.title}</td>
+                    <td>{blog.content}</td>
+                    <td>{blog.publishingDate}</td>
                     <td>
                       <Link to={"/holidays/update/" + blog.id}>
                         <Button variant="outline-secondary m-2">Update</Button>

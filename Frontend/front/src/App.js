@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BlogListPage } from './pages/BlogList';
 import { CreateBlogPage } from './pages/CreateBlog';
 import { Menu } from './Components/Menu';
+import { ViewBlog} from './pages/ViewBlog';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<BlogListPage/>}/>
           <Route path="/create" element={<CreateBlogPage/>} />
+          <Route path='/blogs/view/:id' element={<ViewBlog />} />
         </Routes>
 
       </HashRouter>
