@@ -32,7 +32,6 @@ public class BlogController {
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-//    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML_VALUE)
     @ResponseBody
     public List<BlogEntityDto> getBlogs() {
         return blogService.getAll().stream()

@@ -2,16 +2,18 @@ package lt.techin.egzaminas.Service;
 
 import lt.techin.egzaminas.Model.Blog;
 import lt.techin.egzaminas.dao.BlogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class BlogService {
 
     private final BlogRepository blogRepository;
 
-
+    @Autowired
     public BlogService(BlogRepository blogRepository){
         this.blogRepository= blogRepository;
     }
@@ -33,9 +35,9 @@ public class BlogService {
         var existingBlog = blogRepository.findById(id)
                 .orElseThrow(() -> new NullPointerException("Blog does not exist "+ id.toString()));
 
-        existingBlog.setName(blog.getName());
-        existingBlog.setType(blog.getType());
-        existingBlog.setDestination(blog.getDestination());
+        existingBlog.setTitle(blog.getTitle());
+        existingBlog.setContent(blog.getContent());
+        existingBlog.setPublishingDate(blog.getPublishingDate());
 
         return blogRepository.save(existingBlog);
     }
